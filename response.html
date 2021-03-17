@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Response web page</title>
+</head>
+<body>
+    <div class="Introduction">
+        <h1>fortunes</h1>
+        <h4>To get fortunes click on the button</h4>
+        <div>
+            <button onclick="getFortune()">Get Fortune</button>
+        </div>
+    </div>
+
+    <div id="Fortune"></div>
+    <script>
+        const getFortune = () => {
+            fetch('http://127.0.0.1:3001').then(
+                (res) => {
+                    console.log(res)
+                    return res.text()
+                }
+            ).then(data => {
+            
+                console.log(data)
+                document.getElementById("Fortune").innerHTML = data
+            }).catch(err => {
+                document.getElementById("Fortune").innerHTML = err
+            })
+        }
+    </script>
+</body>
+</html>
